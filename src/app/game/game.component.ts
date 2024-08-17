@@ -74,4 +74,4 @@ export class GameComponent {
     });
   }
   
-}
+} //added a comment
