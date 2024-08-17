@@ -25,7 +25,7 @@ export class GameComponent {
       this.moveCount++;
       if (this.checkWinner()) {
         this.winner = this.currentPlayer;
-        this.triggerConfetti(); // Trigger the confetti effect
+        this.triggerConfetti();
       } else if (this.moveCount === 9) {
         this.winner = 'Draw';
       } else {
@@ -67,11 +67,10 @@ export class GameComponent {
 
   triggerConfetti(): void {
     confetti({
-      particleCount: 200, // Increased particle count for more effect
-      spread: 160, // Wider spread
-      origin: { y: 0.6 }, // Adjust origin
-      colors: ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93'] // Vibrant color palette
+      particleCount: 200,
+      spread: 160,
+      origin: { y: 0.6 },
+      colors: ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93']
     });
   }
-  
-} //added a comment
+}
