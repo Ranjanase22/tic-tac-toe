@@ -1,16 +1,23 @@
-<div class="board">
-  <div *ngFor="let row of board; let rowIndex = index">
-    <button *ngFor="let cell of row; let colIndex = index"
-            class="cell"
-            [disabled]="cell || winner"
-            (click)="makeMove(rowIndex, colIndex)">
-      {{ cell }}
-    </button>
-  </div>
-</div>
+<!-- Game Mode Selection -->
+<app-home *ngIf="!gameMode" (gameModeSelected)="startGame($event)"></app-home>
 
-<div class="status">
-  <p *ngIf="winner">{{ winner === 'Draw' ? 'It\'s a draw!' : winner + ' wins!' }}</p>
-  <p *ngIf="!winner">Current Player: {{ currentPlayer }}</p>
-  <button (click)="resetGame()">Reset Game</button>
+<!-- Game Board and Status: Displayed when the game mode is selected -->
+<div *ngIf="gameMode">
+  <div class="board">
+    <div *ngFor="let row of board; let rowIndex = index">
+      <button *ngFor="let cell of row; let colIndex = index"
+              class="cell"
+              [disabled]="cell || winner"
+              (click)="makeMove(rowIndex, colIndex)">
+        {{ cell }}
+      </button>
+    </div>
+  </div>
+
+  <div class="status">
+    <p *ngIf="winner">{{ winner === 'Draw' ? 'It\'s a draw!' : winner }}</p>
+    <p *ngIf="!winner">Current Player: {{ currentPlayer }}</p>
+    <button (click)="resetGame()">Reset Game</button>
+    <button (click)="goHome()">Back to Home</button> <!-- New button for navigation -->
+  </div>
 </div>
