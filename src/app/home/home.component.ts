@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,11 @@ import { Router } from '@angular/router'; // Import Router
 export class HomeComponent {
   @Output() gameModeSelected = new EventEmitter<'player' | 'computer'>();
 
-  constructor(private router: Router) {} // Inject Router
+  constructor(private router: Router) {}
 
   startGame(mode: 'player' | 'computer'): void {
-    this.router.navigate(['/game']); // Navigate to the game page
+    // Emit the event and navigate to the game page
     this.gameModeSelected.emit(mode);
+    this.router.navigate(['/game']);
   }
 }
